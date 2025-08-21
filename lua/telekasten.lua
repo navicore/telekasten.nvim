@@ -857,7 +857,7 @@ local media_preview = defaulter(function(opts)
     end
 
     if M.Cfg.media_previewer == "kitty-previewer" then
-        preview_cmd = "kitty +kitten icat"
+        preview_cmd = "kitty +kitten icat --passthrough=tmux"
     end
 
     if vim.fn.executable(preview_cmd) == 0 then
