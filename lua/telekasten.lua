@@ -149,6 +149,8 @@ local function defaultConfig(home)
         -- "telescope-media-files" if you have telescope-media-files.nvim installed
         -- "catimg-previewer" if you have catimg installed
         -- "viu-previewer" if you have viu installed
+        -- "chafa-previewer" if you have chafa installed (best quality, supports Kitty protocol)
+        -- "kitty-previewer" if you have kitty terminal
         media_previewer = "telescope-media-files",
         -- files which will be aviable in insert and preview images list
         media_extensions = {
@@ -854,6 +856,17 @@ local media_preview = defaulter(function(opts)
         preview_cmd = M.base_directory
             .. "/telekasten.nvim/scripts/"
             .. M.Cfg.media_previewer
+    end
+
+    if vim.startswith(M.Cfg.media_previewer, "kitty-previewer") then
+        preview_cmd = M.base_directory
+            .. "/telekasten.nvim/scripts/"
+            .. M.Cfg.media_previewer
+    end
+
+    if M.Cfg.media_previewer == "chafa-previewer" then
+        preview_cmd = M.base_directory
+            .. "/telekasten.nvim/scripts/chafa-previewer"
     end
 
     if vim.fn.executable(preview_cmd) == 0 then
