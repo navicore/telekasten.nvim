@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 img="$1"
+width="$4"
+height="$5"
 
-kitty +kitten icat --passthrough=tmux "$img"
+kitty +kitten icat --passthrough=tmux --width=${width} --height=${height} "$img"
 
