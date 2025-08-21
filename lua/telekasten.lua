@@ -856,8 +856,10 @@ local media_preview = defaulter(function(opts)
             .. M.Cfg.media_previewer
     end
 
-    if M.Cfg.media_previewer == "kitty-previewer" then
-        preview_cmd = "kitty +kitten icat --passthrough=tmux"
+    if vim.startswith(M.Cfg.media_previewer, "kitty-previewer") then
+        preview_cmd = M.base_directory
+            .. "/telekasten.nvim/scripts/"
+            .. M.Cfg.media_previewer
     end
 
     if vim.fn.executable(preview_cmd) == 0 then
