@@ -6,12 +6,13 @@ line="$3"
 width="$4"
 height="$5"
 
-# Detect if we're running in tmux
+# When running inside Neovim terminal, we need unicode-placeholder mode
+# This works in terminal programs that don't support kitty graphics protocol
 if [ -n "$TMUX" ]; then
-    # Use passthrough for tmux
-    kitty +kitten icat --passthrough=tmux --place="${width}x${height}@0x0" --scale-up "$img"
+    # Use passthrough for tmux (automatically enables unicode-placeholder)
+    kitty +kitten icat --passthrough=tmux --place="${width}x${height}@0x0" "$img"
 else
-    # Direct display without tmux passthrough
-    kitty +kitten icat --place="${width}x${height}@0x0" --scale-up "$img"
+    # Use unicode-placeholder for display within Neovim terminal
+    kitty +kitten icat --unicode-placeholder --place="${width}x${height}@0x0" "$img"
 fi
 
