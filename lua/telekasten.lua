@@ -149,6 +149,7 @@ local function defaultConfig(home)
         -- "telescope-media-files" if you have telescope-media-files.nvim installed
         -- "catimg-previewer" if you have catimg installed
         -- "viu-previewer" if you have viu installed
+        -- "kitty-previewer" if you have kitty terminal
         media_previewer = "telescope-media-files",
         -- files which will be aviable in insert and preview images list
         media_extensions = {

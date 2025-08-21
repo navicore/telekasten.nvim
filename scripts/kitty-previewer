@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
 img="$1"
+col="$2"
+line="$3"
 width="$4"
 height="$5"
 
-kitty +kitten icat --passthrough=tmux --width=${width} --height=${height} "$img"
+# Detect if we're running in tmux
+if [ -n "$TMUX" ]; then
+    # Use passthrough for tmux
+    kitty +kitten icat --passthrough=tmux --place="${width}x${height}@0x0" --scale-up "$img"
+else
+    # Direct display without tmux passthrough
+    kitty +kitten icat --place="${width}x${height}@0x0" --scale-up "$img"
+fi
 
