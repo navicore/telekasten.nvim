@@ -856,6 +856,10 @@ local media_preview = defaulter(function(opts)
             .. M.Cfg.media_previewer
     end
 
+    if M.Cfg.media_previewer == "kitty-previewer" then
+        preview_cmd = "kitty +kitten icat"
+    end
+
     if vim.fn.executable(preview_cmd) == 0 then
         print("Previewer not found: " .. preview_cmd)
         return conf.file_previewer(opts)
