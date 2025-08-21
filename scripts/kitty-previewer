@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+img="$1"
+
+kitty +kitten icat --passthrough=tmux "$img"
+
