@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+img="$1"
+col="$2"
+line="$3"
+width="$4"
+height="$5"
+
+# Use chafa with Kitty graphics protocol for high-quality image preview
+# Falls back to symbols mode if Kitty protocol isn't supported
+if [ -n "$KITTY_WINDOW_ID" ]; then
+    # We're in Kitty terminal, use Kitty graphics protocol
+    chafa -f kitty -s "${width}x${height}" "$img"
+else
+    # Fallback to high-quality symbols mode for other terminals
+    chafa -f symbols -s "${width}x${height}" "$img"
+fi

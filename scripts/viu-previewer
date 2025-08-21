@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
 img="$1"
+col="$2"
+line="$3"
+width="$4"
+height="$5"
 
-viu "$img"
+# Use viu with size constraints to fit the preview window
+# The -w and -h flags control the output size
+viu "$img" -w "$width" -h "$height"
